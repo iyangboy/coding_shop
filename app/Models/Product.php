@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -22,6 +23,12 @@ class Product extends Model
     protected $casts = [
         'on_sale' => 'boolean', // on_sale 是一个布尔类型的字段
     ];
+
+    public function scopeFilter(Builder $builder)
+    {
+        $filters = request()->query();
+
+    }
 
     // 所属分类
     public function category()
