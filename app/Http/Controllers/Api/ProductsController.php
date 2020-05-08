@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductIndexResource;
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 
 class ProductsController extends Controller
@@ -28,15 +29,10 @@ class ProductsController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    // 详情
+    public function show(Product $product)
     {
-        //
+        return new ProductResource($product);
     }
 
     /**
