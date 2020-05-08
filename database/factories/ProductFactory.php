@@ -18,6 +18,8 @@ $factory->define(Product::class, function (Faker $faker) {
     ]);
 
     return [
+        'category_id'  => \App\Models\ProductCategory::all()->random(1)->first()->id,
+        'brand'        => $faker->randomElement(['小米', '华为', '苹果', '联想']),
         'slug'         => $faker->unique()->slug,
         'title'        => $faker->name,
         'description'  => $faker->sentence,
