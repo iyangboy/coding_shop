@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique()->comment('SLUG');
             $table->string('title')->comment('商品名称');
             $table->text('description')->nullable()->comment('商品详情');
-            $table->string('image')->comment('商品封面图片文件路径');
+            $table->string('image')->nullable()->comment('商品封面图片文件路径');
             $table->boolean('on_sale')->default(true)->comment('商品是否正在售卖');
             $table->float('rating')->default(5)->comment('商品平均评分');
             $table->unsignedInteger('sold_count')->default(0)->comment('销量');
