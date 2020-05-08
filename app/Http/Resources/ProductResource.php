@@ -19,6 +19,7 @@ class ProductResource extends JsonResource
             'id'           => $this->id,
             'slug'         => $this->slug,
             'category_id'  => $this->category_id,
+            'category_name' => $this->category->name ?? '',
             'brand'        => $this->brand,
             'title'        => $this->title,
             'image'        => $this->image,
@@ -26,6 +27,7 @@ class ProductResource extends JsonResource
             'rating'       => $this->rating,
             'sold_count'   => $this->sold_count,
             'review_count' => $this->review_count,
+            'description'  => $this->description,
         ];
     }
 }
