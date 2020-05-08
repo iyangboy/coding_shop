@@ -75,6 +75,10 @@ Route::prefix('v1')
                 Route::get('actived/users', 'UsersController@activedIndex')
                     ->name('actived.users.index');
 
+                // 商品分类
+                Route::apiResource('product_categories', 'ProductCategoriesController');
+
+
                 // 登录后可以访问的接口
                 Route::middleware('auth:api')->group(function() {
                     // 当前登录用户信息
