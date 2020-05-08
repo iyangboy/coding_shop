@@ -78,6 +78,9 @@ Route::prefix('v1')
                 // 商品分类
                 Route::apiResource('product_categories', 'ProductCategoriesController');
 
+                // 商品
+                Route::apiResource('products', 'ProductsController');
+
 
                 // 登录后可以访问的接口
                 Route::middleware('auth:api')->group(function() {

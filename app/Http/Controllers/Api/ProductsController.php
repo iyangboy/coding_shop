@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductIndexResource;
+use App\Models\Product;
 
 class ProductsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // 列表
     public function index()
     {
-        //
+        $products = Product::paginate(16);
+
+        return ProductIndexResource::collection($products);
     }
 
     /**

@@ -14,6 +14,11 @@ class Product extends Model
     //     'rating', 'sold_count', 'review_count', 'price'
     // ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     protected $casts = [
         'on_sale' => 'boolean', // on_sale 是一个布尔类型的字段
     ];
