@@ -26,8 +26,23 @@ class Product extends Model
 
     public function scopeFilter(Builder $builder)
     {
-        $filters = request()->query();
+        $allow_filters = ['search'];
 
+        $filters = request()->query();
+        foreach ($filters as $field => $value) {
+            if ($value && in_array($field, $allow_filters)) {
+                switch ($field) {
+                    case 'search':
+                        if ($search = $value) {
+                            $like = '%' . $search . '%';
+                            $builder->where('title', 'like', $like);
+                        }
+                        break;
+                    default:
+                        $builder->where($field, $value);
+                }
+            }
+        }
     }
 
     // 所属分类
