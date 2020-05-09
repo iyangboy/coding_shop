@@ -26,7 +26,7 @@ class Product extends Model
 
     public function scopeFilter(Builder $builder)
     {
-        $allow_filters = ['search'];
+        $allow_filters = ['search', 'category_id'];
 
         $filters = request()->query();
         foreach ($filters as $field => $value) {
