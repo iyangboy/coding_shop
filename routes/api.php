@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 /*
@@ -12,6 +13,86 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
+Route::get('/test', function(){
+    $product = Product::first();
+    // $product_id = 1;
+    // $product = Product::find($product_id);
+    // dd($product);
+    $product->update([
+        'specification' => [
+            'color'  => [
+                'name'    => '颜色',
+                'options' => ['红色', '蓝色', '绿色'],
+                'default' => '红色'
+            ],
+            'memory' => [
+                'name'    => '内存',
+                'options' => ['8GB & 64GB', '8GB & 128GB', '16GB & 256GB'],
+                'default' => '8GB & 64GB'
+            ],
+        ]
+    ]);
+    // dd($product->variations);
+    dd($product);
+
+    $product->variations()->saveMany([
+        ProductVariation::create([
+            'product_id' => $product_id,
+            'specification' => [
+                'color' => '红色',
+                'memory' => '8GB & 64GB'
+            ],
+            'stock' => 1000,
+            'price' => 2000,
+        ]),
+        ProductVariation::create([
+            'product_id' => $product_id,
+            'specification' => [
+                'color' => '红色',
+                'memory' => '8GB & 128GB'
+            ],
+            'stock' => 1000,
+            'price' => 2000
+        ]),
+        ProductVariation::create([
+            'product_id' => $product_id,
+            'specification' => [
+                'color' => '红色',
+                'memory' => '16GB & 256GB'
+            ],
+            'stock' => 1000,
+            'price' => 3000
+        ]),
+        ProductVariation::create([
+            'product_id' => $product_id,
+            'specification' => [
+                'color' => '蓝色',
+                'memory' => '8GB & 64GB'
+            ],
+            'stock' => 1000,
+            'price' => 1100
+        ]),
+        ProductVariation::create([
+            'product_id' => $product_id,
+            'specification' => [
+                'color' => '蓝色',
+                'memory' => '8GB & 128GB'
+            ],
+            'stock' => 1000,
+            'price' => 2100
+        ]),
+        ProductVariation::create([
+            'product_id' => $product_id,
+            'specification' => [
+                'color' => '蓝色',
+                'memory' => '16GB & 256GB'
+            ],
+            'stock' => 1000,
+            'price' => 3100
+        ]),
+    ]);
+    dd($product->variations);
+});
 
 Route::prefix('v1')
     ->namespace('Api')

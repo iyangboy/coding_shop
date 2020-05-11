@@ -21,7 +21,8 @@ class Product extends Model
     }
 
     protected $casts = [
-        'on_sale' => 'boolean', // on_sale 是一个布尔类型的字段
+        'on_sale' => 'boolean',
+        'specification' => 'array'
     ];
 
     public function scopeFilter(Builder $builder)
