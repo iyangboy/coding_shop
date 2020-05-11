@@ -30,7 +30,8 @@ class ProductResource extends JsonResource
             'desc'         => $this->description,
             'description'  => $this->description,
 
-            'specs'  => $this->specification,
+            'specs'        => $this->specification,
+            'variations'   => $this->variations,
 
 
         ];
