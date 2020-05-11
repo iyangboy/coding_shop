@@ -31,7 +31,8 @@ class ProductResource extends JsonResource
             'description'  => $this->description,
 
             'specs'        => $this->specification,
-            'variations'   => $this->variations,
+            // 'variations'   => $this->variations,
+            'variations'   => ProductVariationResource::collection($this->variations),
 
 
         ];
