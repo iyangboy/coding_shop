@@ -27,7 +27,12 @@ class ProductResource extends JsonResource
             'rating'       => $this->rating,
             'sold_count'   => $this->sold_count,
             'review_count' => $this->review_count,
+            'desc'         => $this->description,
             'description'  => $this->description,
+
+            'specs'  => $this->specification,
+
+
         ];
     }
 }
