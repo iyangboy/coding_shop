@@ -14,7 +14,7 @@ class AddSpecificationFieldInProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->json('specification')->nullable();
+            $table->json('specification')->nullable()->comment('规格');
         });
     }
 

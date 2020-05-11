@@ -21,7 +21,7 @@ class Product extends Model
     }
 
     protected $casts = [
-        'on_sale' => 'boolean',
+        'on_sale'       => 'boolean',
         'specification' => 'array'
     ];
 
@@ -50,5 +50,11 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(ProductCategory::class, 'category_id');
+    }
+
+    // 商品规格参数
+    public function variations()
+    {
+        return $this->hasMany(ProductVariation::class, 'product_id');
     }
 }
