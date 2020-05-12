@@ -36,4 +36,10 @@ class Cart extends Model
             }
         }
     }
+
+    // 清空购物车
+    public function empty()
+    {
+        $this->items()->delete();
+    }
 }

@@ -36,7 +36,7 @@ class CartsController extends Controller
 
         $cart->syncProducts($request->products);
 
-        dd($cart->items);
+        // dd($cart->items);
     }
 
     /**
@@ -62,14 +62,19 @@ class CartsController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // 清空购物车
     public function destroy($id)
     {
         //
     }
+
+    // 清空购物车
+    public function empty(Request $request)
+    {
+        //
+        $cart = $request->user()->cart();
+
+        $cart->empty();
+    }
+
 }

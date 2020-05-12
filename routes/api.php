@@ -30,6 +30,7 @@ Route::prefix('v1')
         });
 
         Route::apiResource('carts', 'CartsController');
+        Route::post('carts/empty', 'CartsController@empty');
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {
