@@ -34,7 +34,7 @@ class CartsController extends Controller
         //
         $cart = $request->user()->cart();
 
-        $cart->syncProductVariations($request->products);
+        $cart->syncProducts($request->products);
 
         dd($cart->items);
     }
