@@ -20,6 +20,10 @@ Route::prefix('v1')
     ->name('api.v1.')
     ->group(function () {
 
+        Route::group(['prefix' => 'auth'], function() {
+            Route::post('register', 'Auth\RegisterController@register');
+        });
+
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {
                 // 图片验证码
