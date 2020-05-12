@@ -21,7 +21,10 @@ Route::prefix('v1')
     ->group(function () {
 
         Route::group(['prefix' => 'auth'], function() {
+            // 用户注册
             Route::post('register', 'Auth\RegisterController@register');
+            // 用户登录
+            Route::post('login', 'Auth\LoginController@login');
         });
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
