@@ -45,4 +45,10 @@ class Cart extends Model
     {
         $this->items()->delete();
     }
+
+    // 总价
+    public function total()
+    {
+        return $this->items->sum('price');
+    }
 }
