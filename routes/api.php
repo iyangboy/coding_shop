@@ -25,6 +25,8 @@ Route::prefix('v1')
             Route::post('register', 'Auth\RegisterController@register');
             // 用户登录
             Route::post('login', 'Auth\LoginController@login');
+            // 用户信息
+            Route::get('me', 'Auth\MeController@me');
         });
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
