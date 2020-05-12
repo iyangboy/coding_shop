@@ -20,4 +20,15 @@ class ProductVariation extends Model
         return $this->belongsTo(Product::class, 'product_id');
     }
 
+    // 产品名称以及规格
+    public function desc()
+    {
+        $desc = $this->product->title . ' : ';
+
+        foreach ($this->specification as $tiem) {
+            $desc .= $tiem . ' ';
+        }
+
+        return $desc;
+    }
 }

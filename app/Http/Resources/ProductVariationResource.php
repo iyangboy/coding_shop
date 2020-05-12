@@ -22,6 +22,7 @@ class ProductVariationResource extends JsonResource
             'price'         => $this->price,
             'stock'         => $this->stock,
             'online'        => $this->online,
+            'desc'          => $this->desc(),
         ];
     }
 }

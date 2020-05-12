@@ -11,7 +11,7 @@ class CartAddItemsRequest extends FormRequest
 
             'products.*.product_variation_id' => "required|exists:product_variations,id",
             'products.*.quantity'             => "required|numeric|min:1",
-            'products.*.price'                => "required",
+            // 'products.*.price'                => "required",
         ];
     }
 }

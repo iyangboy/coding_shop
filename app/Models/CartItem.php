@@ -16,8 +16,9 @@ class CartItem extends Model
     }
 
     // 商品规格
-    public function productVariation()
+    public function variation()
     {
         return $this->belongsTo(ProductVariation::class, 'product_variation_id');
     }
+
 }
