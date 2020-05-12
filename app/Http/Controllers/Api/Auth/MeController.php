@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CartResource;
 use App\Http\Resources\PrivateUserResource;
 
 class MeController extends Controller
@@ -19,5 +20,10 @@ class MeController extends Controller
         return [
             'data' => new PrivateUserResource($request->user()),
         ];
+    }
+
+    public function getCart(Request $request)
+    {
+        return new CartResource($request->user()->cart());
     }
 }

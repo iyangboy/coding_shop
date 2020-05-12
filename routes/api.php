@@ -27,9 +27,13 @@ Route::prefix('v1')
             Route::post('login', 'Auth\LoginController@login');
             // 用户信息
             Route::get('me', 'Auth\MeController@me');
+            // 用户-购物车
+            Route::get('cart', 'Auth\MeController@getCart');
         });
 
+        // 购物车
         Route::apiResource('carts', 'CartsController');
+        // 清空购物车
         Route::post('carts/empty', 'CartsController@empty');
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
