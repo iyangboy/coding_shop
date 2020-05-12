@@ -4,9 +4,15 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\CartAddItemsRequest;
 
 class CartsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +29,14 @@ class CartsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CartAddItemsRequest $request)
     {
         //
+        $cart = $request->user()->cart();
+
+        $cart->syncProductVariations($request->products);
+
+        dd($cart->items);
     }
 
     /**

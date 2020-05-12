@@ -14,4 +14,15 @@ class Cart extends Model
     {
         return $this->hasMany(CartItem::class, 'cart_id');
     }
+
+    // 购物车
+    public function syncProductVariations($products)
+    {
+        foreach ($products as $variation) {
+            $filter = [
+                'product_variation_id' => $variation['product_variation_id']
+            ];
+            $this->items()->updateOrCreate($filter, $variation);
+        }
+    }
 }

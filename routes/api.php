@@ -29,6 +29,8 @@ Route::prefix('v1')
             Route::get('me', 'Auth\MeController@me');
         });
 
+        Route::apiResource('carts', 'CartsController');
+
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {
                 // 图片验证码

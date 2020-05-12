@@ -102,5 +102,20 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
 	public function getJWTCustomClaims()
 	{
 		return [];
-	}
+    }
+
+    // 购物车 一对一
+    public function cart()
+    {
+        return Cart::firstOrCreate([
+            'user_id' => $this->id,
+            'status'  => 'shopping',
+        ]);
+    }
+
+    // 购物车
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'cart_id');
+    }
 }
