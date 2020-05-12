@@ -23,7 +23,10 @@ class Cart extends Model
             $filter = [
                 'product_variation_id' => $variation['product_variation_id']
             ];
-            $this->items()->updateOrCreate($filter, Arr::except($variation, ['desc']));
+            $cartItem = $this->items()->updateOrCreate($filter, Arr::only($variation, ['product_variation_id', 'quantity']));
+
+            $cartItem->price = $cartItem->variation->price * $cartItem->quantity;
+            $cartItem->save();
         }
 
         //
