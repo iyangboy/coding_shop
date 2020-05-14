@@ -33,6 +33,10 @@ class UserAddressesController extends Controller
     {
         // $request->user()->addresses()->save(UserAddress::create($request->only('location')));
 
+        $request->user()->addresses()->update([
+            'default' => false,
+        ]);
+
         $address = UserAddress::create([
             'user_id'  => $request->user()->id,
             'location' => $request->location ?? '',
