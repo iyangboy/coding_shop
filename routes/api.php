@@ -36,6 +36,8 @@ Route::prefix('v1')
         // 清空购物车
         Route::post('carts/empty', 'CartsController@empty');
 
+        Route::apiResource('user_addresses', 'UserAddressesController');
+
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {
                 // 图片验证码
