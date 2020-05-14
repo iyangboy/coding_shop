@@ -5,17 +5,22 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\UserAddressStoreRequest;
+use App\Http\Resources\UserAddressResource;
+use App\Models\UserAddress;
 
 class UserAddressesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
+    public function index(Request $request)
     {
         //
+        $addresses = $request->user()->addresses;
+
+        return UserAddressResource::collection($addresses);
     }
 
     /**
@@ -26,7 +31,15 @@ class UserAddressesController extends Controller
      */
     public function store(UserAddressStoreRequest $request)
     {
-        //
+        // $request->user()->addresses()->save(UserAddress::create($request->only('location')));
+
+        $address = UserAddress::create([
+            'user_id'  => $request->user()->id,
+            'location' => $request->location ?? '',
+            'default'  => true
+        ]);
+
+        return new UserAddressResource($address);
     }
 
     /**

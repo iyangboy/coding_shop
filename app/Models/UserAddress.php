@@ -11,6 +11,10 @@ class UserAddress extends Model
 
     protected $dates = ['last_used_at'];
 
+    protected $casts = [
+        'default' => 'boolean',
+    ];
+
     // 地址
     public function getFullAddressAttribute()
     {
