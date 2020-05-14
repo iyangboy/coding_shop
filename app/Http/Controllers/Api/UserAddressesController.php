@@ -79,4 +79,29 @@ class UserAddressesController extends Controller
     {
         //
     }
+
+    // 地址默认值
+    public function select(Request $request)
+    {
+        // $request->user()->addresses->each(function($address) use ($request) {
+        //     if ($address->id == $request->address_id) {
+        //         $address->update([
+        //             'default' => true,
+        //         ]);
+        //     } else {
+        //         $address->update([
+        //             'default' => false,
+        //         ]);
+        //     }
+        // });
+
+        $request->user()->addresses()->update([
+            'default' => false,
+        ]);
+
+        $address = UserAddress::find($request->address_id);
+        $address->default = true;
+        $address->save();
+
+    }
 }

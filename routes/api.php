@@ -36,7 +36,9 @@ Route::prefix('v1')
         // 清空购物车
         Route::post('carts/empty', 'CartsController@empty');
 
+        // 用户地址
         Route::apiResource('user_addresses', 'UserAddressesController');
+        Route::post('user_address/select', 'UserAddressesController@select');
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {
