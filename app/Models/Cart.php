@@ -51,4 +51,10 @@ class Cart extends Model
     {
         return $this->items->sum('price');
     }
+
+    // 所属购物车
+    public function order()
+    {
+        return $this->hasOne(Order::class, 'cart_id');
+    }
 }
