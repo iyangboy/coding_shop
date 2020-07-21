@@ -93,6 +93,12 @@ class Order extends Model
         return false;
     }
 
+    // 订单商品
+    public function getItemsAttribute()
+    {
+        return $this->cart->items;
+    }
+
     // 所属用户
     public function user()
     {

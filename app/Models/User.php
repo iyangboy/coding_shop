@@ -125,4 +125,9 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
         return $this->hasMany(UserAddress::class, 'user_id');
     }
 
+    // 用户订单
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'user_id');
+    }
 }
